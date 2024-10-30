@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Marcy Vanilla 2</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Big Marcy Vanilla 2</h1>
-        <input type="text" placeholder="Cerca..." class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cerca..." class="search-bar" onkeyup="filterFunction()">
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -26,8 +26,32 @@
         <p>Scopri di più su Big Marcy Vanilla 2 e i nostri servizi.</p>
     </section>
 
+    <section>
+        <h2>Sezioni</h2>
+        <ul id="sectionList">
+            <li>Informazioni su Big Marcy</li>
+            <li>Servizi offerti</li>
+            <li>Contatti e supporto</li>
+            <li>Novità e aggiornamenti</li>
+        </ul>
+    </section>
+
     <footer>
         <p>&copy; 2024 Big Marcy Vanilla 2. Tutti i diritti riservati.</p>
     </footer>
+
+    <script>
+        function filterFunction() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const ul = document.getElementById("sectionList");
+            const li = ul.getElementsByTagName('li');
+
+            for (let i = 0; i < li.length; i++) {
+                const txtValue = li[i].textContent || li[i].innerText;
+                li[i].style.display = txtValue.toLowerCase().includes(filter) ? "" : "none";
+            }
+        }
+    </script>
 </body>
 </html>
